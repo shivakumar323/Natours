@@ -7,7 +7,25 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; // default font-size of browser is 16px, 62.5% of 16px is 10px which is equal to 1rem(1rem = 10px). 
+
+    @include respond(big-desktop) { // 1rem = 12px then 12/16 = 0.75 = 75%
+        font-size: 75%;
+    }
+
+    @include respond(tab-land) { // 1rem = 9px then 9/16 = 0.5625 = 56.25% 
+        font-size: 56.25%;
+    }
+
+    @include respond(phone) {
+        font-size: 50%;
+    }
+
+    @include respond(tab-port) {  // we want 1 rem to be 8px in tab-landscape mode so the caluclation for font-size is 8/16 = 0.5 = 50%
+        font-size: 50%;
+    }
+
+   
 }
 
 body {
