@@ -1,0 +1,142 @@
+.navigation {
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000; // for making sure it appears on top of all elements of screen. also this property works only when we define position property for the element which we have defined already(position: fixed in this case)
+
+        transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1); // refer easings.net for different cubic-bezier values or visit cubic-bezier.com
+    }
+
+    &__button {
+        position: fixed;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        top: 6rem; // we are defining 6 rem for top and right in order to cover or hide background fully which is in radial gradient of color primary
+        right: 6rem;
+        background-color: $color-white;
+        z-index: 2000; // it should be greater than background since we want tthis button on top of background
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center; // to center the navigation__icon element
+        cursor: pointer;
+    }
+
+    &__checkbox {
+        display: none; // we don't want this to be dispalyed as we are building our own checkbox similar to radio button we did in casee of section-booking
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__nav {
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        z-index: 1500;
+
+        opacity: 0;
+        width: 0; // we are setting width to 0 along with opacity to 0 in order to hide this element at the begnning, we will be showig it only when menu button is clicked.
+        transition: all .8s cubic-bezier(0.87, 0, 0.13, 1);
+
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            text-decoration: none;
+            color: $color-white;
+            padding: 1rem 2rem;
+            font-size: 3rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 230%;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+    }
+
+    //Functionality
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;   
+    }
+
+
+    //Icon
+
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: ""; // when ever we are using before and after psudo elements we should specify this content property
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before { top: -.8rem; }
+        &::after { top: .8rem; }
+    }
+
+    &__button:hover &__icon {
+        &::before { top: -1rem; }
+        &::after { top: 1rem; }
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent; // for hiding the middle line of menu icon 
+
+        &::before {
+            top: 0;
+            transform: rotate(135deg); // we can use 45deg in place of 135deg(180-45 = 135)
+        }
+
+        &::after {
+            top: 0;
+            transform: rotate(-135deg); // we can use -45deg in place of -135deg(-180+45 = -135)
+        }
+    }
+
+}
