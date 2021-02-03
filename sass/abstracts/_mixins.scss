@@ -4,5 +4,40 @@
         display: table;
         clear: both;
     }
-
 } 
+
+// media query manager
+/*
+0 to 600 px : Phone
+600px to 900px : Tablet potrait
+900px to 1200px: Tablet Landscape
+1200px to 1800px : is where our normal or default styles apply(desktop first view)
+1800+px : Big Desktop 
+*/
+
+
+/* break point choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) {@content}; // 37.5em = 600px
+    }
+
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) {@content}; // 900px = 56.25em
+    }
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {@content}; // 1200px = 75em
+    }
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {@content}; // 1800px = 112.5em
+    }
+}
