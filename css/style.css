@@ -4,13 +4,16 @@
 900px to 1200px: Tablet Landscape
 1200px to 1800px : is where our normal or default styles apply(desktop first view)
 1800+px : Big Desktop 
-*/
-/* break point choices
+
+
+
+break point choices
 - phone
 - tab-port
 - tab-land
 - big-desktop
 
+Order: Base + typography > General Layout + Grid >Page Layout > Components
 1em = 16px
 */
 /*
@@ -64,23 +67,26 @@ html {
   @media (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 37.5em) {
-    html {
-      font-size: 50%; } }
   @media (max-width: 56.25em) {
     html {
       font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 43.75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /*font-size: 16px;*/
   line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+  color: #777; }
 
 .heading-primary {
   color: #fff;
@@ -100,6 +106,10 @@ body {
     /*
         animation-iteration-count: 3;
         */ }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        font-size: 5rem;
+        letter-spacing: 1rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -107,6 +117,10 @@ body {
     letter-spacing: 1.75rem;
     animation-name: moveInRight;
     animation-duration: 1s; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        font-size: 1.5rem;
+        letter-spacing: .5rem; } }
 
 .heading-secondary {
   text-transform: uppercase;
@@ -119,6 +133,12 @@ body {
   color: transparent;
   letter-spacing: .2rem;
   transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -566,6 +586,9 @@ body {
   background-color: #333;
   font-size: 1.3rem;
   padding: 10rem 0; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 10rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
@@ -576,6 +599,10 @@ body {
     border-top: 1px solid #777;
     padding-top: 2rem;
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        display: 100%;
+        text-align: center; } }
   .footer__list {
     list-style: none; }
   .footer__item {
@@ -599,12 +626,24 @@ body {
     padding-top: 2rem;
     display: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__copyright {
+        display: 100%;
+        text-align: center;
+        float: none; } }
 
 .row {
   max-width: 114rem;
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     display: table;
@@ -613,6 +652,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -634,6 +680,10 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative; }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -657,6 +707,10 @@ body {
   background-image: radial-gradient(#7ed56f, #28b485);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.83, 0, 0.17, 1); }
+  @media (max-width: 56.25em) {
+    .navigation__background {
+      top: 4.5rem;
+      right: 4.5rem; } }
 
 .navigation__button {
   position: fixed;
@@ -670,6 +724,10 @@ body {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer; }
+  @media (max-width: 56.25em) {
+    .navigation__button {
+      top: 4rem;
+      right: 4rem; } }
 
 .navigation__checkbox {
   display: none; }

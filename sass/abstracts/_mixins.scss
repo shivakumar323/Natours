@@ -13,15 +13,16 @@
 900px to 1200px: Tablet Landscape
 1200px to 1800px : is where our normal or default styles apply(desktop first view)
 1800+px : Big Desktop 
-*/
 
 
-/* break point choices
+
+break point choices
 - phone
 - tab-port
 - tab-land
 - big-desktop
 
+Order: Base + typography > General Layout + Grid >Page Layout > Components
 1em = 16px
 */
 @mixin respond($breakpoint) {
