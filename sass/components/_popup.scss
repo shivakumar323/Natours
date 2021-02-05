@@ -53,6 +53,10 @@
     &__left {
         width: 33.333333%;
         display: table-cell; // Parent should be specified as table(&__content in our case) also browser will give eaual height for both left and right if we define this property for both left and right.
+
+        @include respond(tab-port) {
+            vertical-align: middle;
+        }
     }
 
     &__right {
