@@ -11,6 +11,13 @@
     opacity: 0;
     visibility: hidden;
 
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) { // if this attribute is suppoerted by browser then it will be applied that is why we are using @supports keyword, if not supported then we are doing deligated degradation which means we are not applying this block if it's not suppoorted.      
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-grey-dark-3, .3);
+    }
+
+
     &:target { // on clicking book now of section-tours we are displating this popup
         opacity: 1;
         visibility: visible;

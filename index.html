@@ -6,7 +6,6 @@
         
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
         <link rel="stylesheet" href="css/icon-font.css">
-        <link rel="stylesheet" href="css/icon-font.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         
@@ -71,11 +70,37 @@
                         <a href="#" class="btn-text">Learn more &rarr;</a>
                     </div>
 
+                    <!--
+                        300w stands for 300 width which is the size of the image nat-1.jpg, similarly 1000w is the size of nat-1-large.jpg image
+                        20vw stands for 20 viewport width whicg is calculated as 114/900 = 0.19 which is approximately 20%, similarly 30vw = 171/600 = 30% and 300px is default size that is default pic size in browser which means if non of the previous conditions apply then this is applied
+                    -->
+
                     <div class="col-1-of-2">
-                        <div class="composition">
+                        <div class="composition"> 
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"  
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" 
+                                 alt="photo1"
+                                 class="composition__photo composition__photo--p1"
+                                 src="img/nat-1-large.jpg"> <!-- in case user is using old browser which does'nt support srcset,sizes etc than this will be applied-->
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"    
+                                 alt="photo2"
+                                 class="composition__photo composition__photo--p2"
+                                 src="img/nat-2-large.jpg">
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"    
+                                 alt="photo3"
+                                 class="composition__photo composition__photo--p3"
+                                 src="img/nat-3-large.jpg">
+
+
+                            <!--
                             <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                             <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
                             <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            -->
                         </div>
                     </div>
                 </div>
@@ -322,7 +347,10 @@
         </main>
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="img/logo-green-2x.png" alt="Full logo">
+                <picture class="footer__logo">
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)"> <!--forcing the browser to choose small image in case of mobile device by defining max width -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png"> <!--here 1x and 2x are density selectors for high resolution screens density will be 2x hence logo-green-2x.png will be choosen by browser, similarly for low resolution screens image with 1x will be choosen. Also srcset is used to give browser the choice to select between multiple images. This is an example of density switching -->
+                </picture>
             </div>
             <div class="row">
                 <div class="col-1-of-2">

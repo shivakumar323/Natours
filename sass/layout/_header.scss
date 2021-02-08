@@ -1,11 +1,25 @@
 .header {
-    height: 95vh;
-    background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+    height: 85vh;
+    background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
+
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), // 37.em = 600px = 600/16 em, dpi stands for dots per inch which is the resolution of apple screen, as resolution is more in case of apple, we are giving hero image with higher resolution instead of hero-small.jpg which has smaller resolution. also we want this image when min-width is 600px, for below 600px width of the screen we don't want this much big image.
+           (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) // this line is for safari browser
+           { 
+               background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+           }
+
+    @media (min-width: 125em) { // 125em = 2000px = 2000/16 em
+        background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+    }
 
     @include respond(phone) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
